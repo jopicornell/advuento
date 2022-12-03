@@ -1,7 +1,7 @@
 <template>
   <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
     <a href="#">
-      <img class="rounded-t-lg" src="https://i.dummyjson.com/data/products/5/thumbnail.jpg" alt="" />
+      <img class="object-cover h-48 w-96 rounded-t-lg" src="https://i.dummyjson.com/data/products/5/thumbnail.jpg" alt="" />
     </a>
     <div class="p-5">
       <a href="#">
