@@ -1,10 +1,10 @@
 <template>
-  <div class='max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700'>
+  <div class='flex flex-col max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700'>
     <a href='#'>
       <img class='object-cover h-48 w-96 rounded-t-lg' src='https://i.dummyjson.com/data/products/5/thumbnail.jpg'
            alt='' />
     </a>
-    <div class='p-5 flex flex-col justify-between'>
+    <div class='p-5 flex-1'>
       <a href='#'>
         <h5 class='mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>Huawei P30</h5>
       </a>
