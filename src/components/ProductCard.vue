@@ -1,15 +1,14 @@
 <template>
   <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
     <a href="#">
-      <img class="rounded-t-lg" src="https://i.dummyjson.com/data/products/5/thumbnail.jpg" alt="" />
+      <img class="object-cover h-48 w-96 rounded-t-lg" :src="product.thumbnail" alt="" />
     </a>
     <div class="p-5">
       <a href="#">
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Huawei P30</h5>
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ product.title }}</h5>
       </a>
       <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-        Huawei’s re-badged P30 Pro New Edition was officially unveiled yesterday in Germany and now the device has made
-        its way to the UK.
+        {{  product.description }}
       </p>
       <a
         href="#"
@@ -46,3 +45,14 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props: {
+    product: {
+      type: Object,
+      required: true,
+    },
+  },
+}
+</script>

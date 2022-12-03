@@ -70,7 +70,7 @@ export default {
     async findProducts(searchTerm) {
       clearTimeout(this.timeoutId)
       this.timeoutId = setTimeout(async () => {
-        this.products = await this.getProducts(searchTerm)
+        this.$emit('found-products', await this.getProducts(searchTerm))
       }, 300)
     },
   },

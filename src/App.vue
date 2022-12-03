@@ -1,7 +1,7 @@
 <template>
   <div class="w-full flex flex-col gap-5 justify-center p-5">
-    <search-products></search-products>
-    <product-list></product-list>
+    <search-products @found-products='foundProducts'></search-products>
+    <product-list :products='products'></product-list>
   </div>
 </template>
 
@@ -13,25 +13,14 @@ export default {
   components: { SearchProducts, ProductList },
   data() {
     return {
-      searchTerm: '',
-      products: [],
-      selectedProduct: null,
-      loading: false,
+      products: []
     }
+
   },
   methods: {
-    async findProducts(searchTerm) {
-      this.loading = true
-      if (!searchTerm) {
-        this.loading = false
-        this.products = []
-        return
-      }
-      const productsResponse = await fetch(`https://dummyjson.com/products/search?q=${searchTerm}`)
-      const { products } = await productsResponse.json()
+    foundProducts(products) {
       this.products = products
-      this.loading = false
-    },
+    }
   },
 }
 </script>
