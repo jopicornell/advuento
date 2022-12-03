@@ -1,16 +1,16 @@
 <template>
-  <div class="w-full flex flex-col gap-5 justify-center p-5">
-    <search-products @found-products='foundProducts'></search-products>
+  <div class="w-full flex flex-col gap-5 justify-stretch p-5">
+    <app-header @found-products='foundProducts'/>
     <product-list :products='products'></product-list>
   </div>
 </template>
 
 <script>
-import SearchProducts from './components/SearchProducts.vue'
 import ProductList from './components/ProductList.vue'
+import AppHeader from './components/AppHeader.vue'
 
 export default {
-  components: { SearchProducts, ProductList },
+  components: { ProductList, AppHeader },
   data() {
     return {
       products: []
