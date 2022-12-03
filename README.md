@@ -22,7 +22,8 @@ funcione la aplicación. Para ello, tenéis que seguir los siguientes pasos:
 está hecha, pero falta que se pase el listado de productos al componente padre.
 - Hacer que ProductList reciba el listado de productos y lo muestre en pantalla. Para ello, tenéis que usar v-for para
 recorrer el listado de productos y mostrarlos en pantalla.
-- Hacer que ProductCard reciba un producto y lo muestre en pantalla. Para ello, tenéis que usar props para recibir el producto.
+- Hacer que ProductCard reciba un producto y lo muestre en pantalla. Para ello, tenéis que usar props para recibir el producto 
+y modificar el template.
 
 Para los Seniors y los que quieran ir más allá, os proponemos que uséis la composition API para hacer el reto. Pensad que se
 trata de aprender entre todos y que no hay una única forma de hacerlo, así que si tenéis alguna duda, podéis preguntar en el
