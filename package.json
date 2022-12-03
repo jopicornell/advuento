@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "flowbite": "^1.5.4",
+    "pinia": "^2.0.27",
     "vue": "^3.2.37"
   },
   "devDependencies": {
