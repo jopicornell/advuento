@@ -31,7 +31,7 @@
                         <ul role='list' class='-my-6 divide-y divide-gray-200'>
                           <li v-for='product in products' :key='product.id' class='flex py-6'>
                             <div class='h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200'>
-                              <img :src='product.imageSrc' :alt='product.imageAlt'
+                              <img :src='product.thumbnail' :alt='product.description'
                                    class='h-full w-full object-cover object-center' />
                             </div>
 
@@ -39,11 +39,11 @@
                               <div>
                                 <div class='flex justify-between text-base font-medium text-gray-900'>
                                   <h3>
-                                    <a :href='product.href'>{{ product.name }}</a>
+                                    <a>{{ product.title }}</a>
                                   </h3>
-                                  <p class='ml-4'>{{ product.price }}</p>
+                                  <p class='ml-4'>{{ `$${product.price.toFixed(2)}` }}</p>
                                 </div>
-                                <p class='mt-1 text-sm text-gray-500'>{{ product.color }}</p>
+                                <p class='mt-1 text-sm text-gray-500'>{{ product.description }}</p>
                               </div>
                               <div class='flex flex-1 items-end justify-between text-sm'>
                                 <p class='text-gray-500'>Qty {{ product.quantity }}</p>
@@ -111,15 +111,25 @@ export default {
       openDialog: false,
       products: [
         {
-          id: 1,
-          name: 'Basic Tee',
-          href: '#',
-          price: '$35.00',
-          color: 'Black',
-          quantity: 1,
-          imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
-          imageAlt: 'Front of men’s Basic Tee in black.',
-        },
+          "id": 1,
+          "title": "iPhone 9",
+          "description": "An apple mobile which is nothing like apple",
+          "price": 549,
+          "discountPercentage": 12.96,
+          "rating": 4.69,
+          "stock": 94,
+          "quantity": 1,
+          "brand": "Apple",
+          "category": "smartphones",
+          "thumbnail": "https://i.dummyjson.com/data/products/1/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/1/1.jpg",
+            "https://i.dummyjson.com/data/products/1/2.jpg",
+            "https://i.dummyjson.com/data/products/1/3.jpg",
+            "https://i.dummyjson.com/data/products/1/4.jpg",
+            "https://i.dummyjson.com/data/products/1/thumbnail.jpg"
+          ]
+        }
         // More products...
       ],
     }
