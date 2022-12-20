@@ -1,6 +1,6 @@
 <template>
-  <TransitionRoot as='template' :show='openDialog'>
-    <Dialog as='div' class='relative z-10' @close='openDialog = false'>
+  <TransitionRoot as='template' :show='isDialogOpen'>
+    <Dialog as='div' class='relative z-10' @close='isDialogOpen = false'>
       <TransitionChild as='template' enter='ease-in-out duration-500' enter-from='opacity-0' enter-to='opacity-100'
                        leave='ease-in-out duration-500' leave-from='opacity-100' leave-to='opacity-0'>
         <div class='fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity' />
@@ -19,7 +19,7 @@
                     <div class='flex items-start justify-between'>
                       <DialogTitle class='text-lg font-medium text-gray-900'>Shopping cart</DialogTitle>
                       <div class='ml-3 flex h-7 items-center'>
-                        <button type='button' class='-m-2 p-2 text-gray-400 hover:text-gray-500' @click='openDialog = false'>
+                        <button type='button' class='-m-2 p-2 text-gray-400 hover:text-gray-500' @click='isDialogOpen = false'>
                           <span class='sr-only'>Close panel</span>
                           <XMarkIcon class='h-6 w-6' aria-hidden='true' />
                         </button>
@@ -31,7 +31,7 @@
                         <ul role='list' class='-my-6 divide-y divide-gray-200'>
                           <li v-for='product in products' :key='product.id' class='flex py-6'>
                             <div class='h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200'>
-                              <img :src='product.imageSrc' :alt='product.imageAlt'
+                              <img :src='product.thumbnail' :alt='product.name'
                                    class='h-full w-full object-cover object-center' />
                             </div>
 
@@ -39,11 +39,11 @@
                               <div>
                                 <div class='flex justify-between text-base font-medium text-gray-900'>
                                   <h3>
-                                    <a :href='product.href'>{{ product.name }}</a>
+                                    <a>{{ product.title }}</a>
                                   </h3>
-                                  <p class='ml-4'>{{ product.price }}</p>
+                                  <p class='ml-4'>{{ `$${product.price.toFixed(2)}` }}</p>
                                 </div>
-                                <p class='mt-1 text-sm text-gray-500'>{{ product.color }}</p>
+                                <p class='mt-1 text-sm text-gray-500'>{{ product.description }}</p>
                               </div>
                               <div class='flex flex-1 items-end justify-between text-sm'>
                                 <p class='text-gray-500'>Qty {{ product.quantity }}</p>
@@ -92,48 +92,21 @@
   </TransitionRoot>
 </template>
 
-<script>
+<script setup>
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
 import { useCartStore } from '@/stores/cart'
+import { ref, defineExpose, computed } from 'vue'
 
-export default {
-  components: {
-    Dialog,
-    DialogPanel,
-    DialogTitle,
-    TransitionChild,
-    TransitionRoot,
-    XMarkIcon,
-  },
-  data() {
-    return {
-      openDialog: false,
-      products: [
-        {
-          id: 1,
-          name: 'Basic Tee',
-          href: '#',
-          price: '$35.00',
-          color: 'Black',
-          quantity: 1,
-          imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
-          imageAlt: 'Front of men’s Basic Tee in black.',
-        },
-        // More products...
-      ],
-    }
-  },
-  setup() {
-    const cartStore = useCartStore()
-    return { cartStore }
-  },
-  methods: {
-    open() {
-      this.openDialog = true
-    },
-  },
+const isDialogOpen = ref(false)
+const cartStore = useCartStore()
+
+const products = computed(() => cartStore.cartList)
+
+const open = () => {
+  isDialogOpen.value = true
 }
+defineExpose({ open })
 </script>
 
 <style scoped>

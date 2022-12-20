@@ -13,6 +13,7 @@
     </div>
     <a
       href='#'
+      @click='addProductToCart'
       class='
           w-full
           gap-x-2
@@ -40,22 +41,12 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { useCartStore } from '@/stores/cart'
+const props = defineProps(['product'])
+const cartStore = useCartStore()
 
-export default {
-  props: {
-    product: {
-      type: Object,
-      required: true,
-    },
-  },
-  setup(props) {
-    const cartStore = useCartStore()
-    return {
-      cartStore,
-      product: props.product,
-    }
-  },
+const addProductToCart = () => {
+  cartStore.addProduct(props.product)
 }
 </script>
