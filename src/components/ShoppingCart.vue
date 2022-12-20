@@ -95,6 +95,7 @@
 <script>
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
+import { useCartStore } from '@/stores/cart'
 
 export default {
   components: {
@@ -122,6 +123,10 @@ export default {
         // More products...
       ],
     }
+  },
+  setup() {
+    const cartStore = useCartStore()
+    return { cartStore }
   },
   methods: {
     open() {

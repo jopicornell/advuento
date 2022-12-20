@@ -41,12 +41,21 @@
 </template>
 
 <script>
+import { useCartStore } from '@/stores/cart'
+
 export default {
   props: {
     product: {
       type: Object,
       required: true,
     },
+  },
+  setup(props) {
+    const cartStore = useCartStore()
+    return {
+      cartStore,
+      product: props.product,
+    }
   },
 }
 </script>
